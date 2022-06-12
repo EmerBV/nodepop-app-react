@@ -1,13 +1,13 @@
-import { Outlet } from 'react-router-dom';
+import { Outlet } from "react-router-dom";
 
-import Header from './Header';
+import Header from "./Header";
 
 const style = {
   layoutWrapper: "w-full p-2",
   headerContainer: "flex items-center justify-between",
   layoutContainer: "items-center w-full p-2 justify-center",
   footerContainer: "w-full text-center font-semibold",
-}
+};
 
 function Layout() {
   return (

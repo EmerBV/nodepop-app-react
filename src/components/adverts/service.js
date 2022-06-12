@@ -1,8 +1,8 @@
-import client from '../../api/client';
+import client from "../../api/client";
 
-const advertsBaseUrl = '/api/v1/adverts';
+const advertsBaseUrl = "/api/v1/adverts";
 
-const transformRange = range => {
+const transformRange = (range) => {
   let rangeMin, rangeMax;
   if (range) {
     if (range[0] > range[1]) {
@@ -31,11 +31,11 @@ export const getAdverts = (name, isSale, range, multiSelector) => {
 
   let url = `${advertsBaseUrl}?name=${name}`;
 
-  if (isSale === 'true' || isSale === 'false') url += `&sale=${isSale}`;
+  if (isSale === "true" || isSale === "false") url += `&sale=${isSale}`;
 
   url += `&price=${rangeObj.rangeMin}&price=${rangeObj.rangeMax}`;
 
-  multiSelector?.forEach(tag => {
+  multiSelector?.forEach((tag) => {
     url += `&tags=${tag}`;
   });
 
@@ -46,17 +46,17 @@ export const getTags = () => {
   const url = `${advertsBaseUrl}/tags`;
   return client.get(url);
 };
-export const getAdvert = advertId => {
+export const getAdvert = (advertId) => {
   const url = `${advertsBaseUrl}/${advertId}`;
   return client.get(url);
 };
 
-export const deleteAdvert = advertId => {
+export const deleteAdvert = (advertId) => {
   const url = `${advertsBaseUrl}/${advertId}`;
   return client.delete(url);
 };
 
-export const createAdvert = advert => {
+export const createAdvert = (advert) => {
   const url = advertsBaseUrl;
   return client.post(url, advert);
 };

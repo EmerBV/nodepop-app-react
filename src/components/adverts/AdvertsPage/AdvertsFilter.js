@@ -1,22 +1,24 @@
-import { useEffect, useState } from 'react';
-import InputRadio from '../../common/inputRadio';
-import InputSearch from '../../common/InputSearch';
-import SliderBar from '../../common/PriceSliderBar';
-import TextArea from '../../common/MultiSelector';
-import { getTags } from '../service';
+import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+
+import InputRadio from "../../common/inputRadio";
+import InputSearch from "../../common/InputSearch";
+import SliderBar from "../../common/PriceSliderBar";
+import TextArea from "../../common/MultiSelector";
+import { getTags } from "../service";
 
 const style = {
   filtertWrapper: "w-full",
   filterText: "my-4",
   filterContainer: "flex my-4",
   filterbyText: "font-semibold",
-  filterButton: "items-center rounded border border-[#282b2f] h-8 px-8 font-semibold",
-  filterBox: "pr-10"
-}
+  resetButton:
+    "items-center rounded border border-[#282b2f] h-8 px-8 font-semibold",
+  filterBox: "pr-10",
+};
 
 const AdvertsFilter = ({
   changeNameFilter,
-  sendAllFilters,
   changeIsSaleFilter,
   changeRangeFilter,
   changeMultiSelector,
@@ -25,27 +27,23 @@ const AdvertsFilter = ({
   const [tags, setTags] = useState([]);
 
   useEffect(() => {
-    getTags().then(tags => setTags(tags));
+    getTags().then((tags) => setTags(tags));
   }, []);
 
-  const handleInputName = e => {
+  const handleInputName = (e) => {
     changeNameFilter(e.target.value);
   };
 
-  const handleMultiSelector = e => {
+  const handleMultiSelector = (e) => {
     let valueMultiSelector = Array.from(
       e.target.selectedOptions,
-      option => option.value,
+      (option) => option.value
     );
     changeMultiSelector(valueMultiSelector);
   };
 
-  const handleInputBuySell = e => {
+  const handleInputBuySell = (e) => {
     changeIsSaleFilter(e.target.value);
-  };
-  const sendFilters = e => {
-    e.preventDefault();
-    sendAllFilters();
   };
 
   const updateRange = (e, data) => {
@@ -54,9 +52,8 @@ const AdvertsFilter = ({
   };
 
   const saleObjet = {
-    false: 'buy',
-    true: 'sale',
-    all: 'all',
+    false: "buy",
+    true: "sale",
   };
 
   return (
@@ -67,16 +64,16 @@ const AdvertsFilter = ({
       <div className={style.filterContainer}>
         <InputSearch
           onChange={handleInputName}
-          label={'Name'}
+          label={"Name"}
           className={style.filterBox}
         />
         <InputRadio
           onChange={handleInputBuySell}
-          label={'Event'}
+          label={"Event"}
           valueObjet={saleObjet}
         />
         <SliderBar
-          label={'Price range'}
+          label={"Price range"}
           maxSelected={6000}
           minSelected={3000}
           onChange={updateRange}
@@ -86,14 +83,12 @@ const AdvertsFilter = ({
         <TextArea
           tags={tags}
           handleMultiSelector={handleMultiSelector}
-          label={'Tags'}
+          label={"Tags"}
           className={style.filterBox}
         />
-        <button
-          className={style.filterButton}
-          onClick={sendFilters}
-        >
-          Filter
+
+        <button className={style.resetButton}>
+          <Link to="/">Reset</Link>
         </button>
       </div>
     </div>

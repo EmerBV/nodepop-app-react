@@ -1,11 +1,11 @@
-import { forwardRef } from 'react';
+import { forwardRef } from "react";
 
 const style = {
-  formWrapper: 'flex items-center w-full',
+  formWrapper: "flex items-center w-full",
   labelContainer: "flex py-2",
   span: "flex pr-2",
   placeholder: "pl-2",
-}
+};
 
 const FormField = forwardRef(({ label, ...props }, ref) => {
   return (

@@ -1,15 +1,15 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import { BrowserRouter as Router } from 'react-router-dom';
-import './index.css';
-import App from './App';
-import storage from './utils/storage';
-import { setAuthorizationHeader } from './api/client';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import { BrowserRouter as Router } from "react-router-dom";
+import "./index.css";
+import App from "./App";
+import storage from "./utils/storage";
+import { setAuthorizationHeader } from "./api/client";
 
-const accessToken = storage.get('auth');
+const accessToken = storage.get("auth");
 setAuthorizationHeader(accessToken);
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <Router>
@@ -17,4 +17,3 @@ root.render(
     </Router>
   </React.StrictMode>
 );
-

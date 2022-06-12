@@ -1,17 +1,20 @@
 import { useState, useContext, useRef, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
+
 import FormField from "../../common/FormField";
 import { login } from "../service";
 import AuthContext from "../context";
 
 const style = {
-  loginWrapper: "items-center text-center rounded border border-[#282b2f] m-4 p-10",
+  loginWrapper:
+    "items-center text-center rounded border border-[#282b2f] m-4 p-10",
   loginTittle: "flex font-extrabold",
   formContainer: "justify-center",
   placeholderContainer: "px-4 border border-[#151b22] outline-none",
   rememberContainer: "flex items-center py-2",
   rememberText: "pl-2",
-  loginButton: "flex items-center rounded border border-[#282b2f] font-semibold px-8 py-1",
+  loginButton:
+    "flex items-center rounded border border-[#282b2f] font-semibold px-8 py-1",
 };
 
 function LoginPage() {
@@ -91,9 +94,7 @@ function LoginPage() {
             value="remember"
             onChange={handleChange}
           />
-          <label className={style.rememberText}>
-            Remember me
-          </label>
+          <label className={style.rememberText}>Remember me</label>
         </div>
 
         <button
@@ -104,11 +105,7 @@ function LoginPage() {
           Log In
         </button>
       </form>
-      {error && (
-        <div onClick={resetError} className="loginPage-error">
-          {error.message}
-        </div>
-      )}
+      {error && <div onClick={resetError}>{error.message}</div>}
     </div>
   );
 }

@@ -1,5 +1,5 @@
-import { Fragment } from 'react';
-import Title from '../common/Title';
+import { Fragment } from "react";
+import Title from "../common/Title";
 
 function Page({ title, children }) {
   return (
